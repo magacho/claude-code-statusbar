@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Claude Code statusline — Magacho
-# Linha 1:  dir │ branch git │ modelo │ modo(effort/thinking/fast) │ org │ plano
-# Linha 2:  contexto │ 5h │ 7d(semanal) │ identidade git
+# Linha 1:  dir │ branch git │ modelo │ modo(effort/thinking/fast) │ org
+# Linha 2:  contexto │ 5h │ 7d(semanal) │ plano │ identidade git
 #
 # NOTAS sobre a "franquia" do claude.ai:
 #   - O harness expõe apenas duas janelas: five_hour (sessão de 5h) e seven_day (semanal).
@@ -147,12 +147,12 @@ if [ -n "$org" ]; then
   out="${out}${SEP}${FG_CYAN}🏢 ${org}${RST}"
   [ -n "$orgtype" ] && out="${out}${DIM} (${orgtype})${RST}"
 fi
-[ -n "$plan" ] && out="${out}${SEP}${FG_MAG}💳 ${plan}${RST}"
 
-# ---------- 2ª linha: contexto + janelas + identidade git ----------
+# ---------- 2ª linha: contexto + janelas + plano + identidade git ----------
 line2="${FG_BLUE}$(ctxbar "$ctx")${RST}"
 line2="${line2}${SEP}$(win five_hour '5h')"
 line2="${line2}${SEP}$(win seven_day '7d')"
+[ -n "$plan" ] && line2="${line2}${SEP}${FG_MAG}💳 ${plan}${RST}"
 if [ -n "$guser" ] || [ -n "$gmail" ]; then
   line2="${line2}${SEP}${FG_GREY}👤 ${RST}${FG_GREEN}${guser:-?}${RST}"
   [ -n "$gmail" ] && line2="${line2}${FG_GREY} <${RST}${DIM}${gmail}${RST}${FG_GREY}>${RST}"

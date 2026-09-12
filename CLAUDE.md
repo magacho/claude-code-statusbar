@@ -8,7 +8,8 @@ Statusline customizada do Claude Code. Um único script Bash (`status-bar.sh`) q
 executa a cada atualização de estado: recebe um JSON no **stdin** e escreve no **stdout** até
 duas linhas com escapes ANSI.
 
-Não há build, testes, lint, dependências instaláveis nem versionamento git neste diretório.
+Não há build, testes, lint nem dependências instaláveis. O repositório é publicado em
+<https://github.com/magacho/claude-code-statusbar> (MIT).
 `README.md` é a documentação de usuário (instalação, leitura da barra, troubleshooting); este
 arquivo cobre o que é preciso saber para **alterar** o script.
 
@@ -77,8 +78,8 @@ precisam mudar juntos — a ordem dos campos é posicional.
 
 ## Layout da saída
 
-- **Linha 1:** `📁 dir │ ⎇ branch │ modelo │ modo │ 🏢 org (tipo) │ 💳 plano`
-- **Linha 2:** `barra de contexto │ 5h % ⟳reset │ 7d % ⟳reset │ 👤 nome <email>`
+- **Linha 1:** `📁 dir │ ⎇ branch │ modelo │ modo │ 🏢 org (tipo)`
+- **Linha 2:** `barra de contexto │ 5h % ⟳reset │ 7d % ⟳reset │ 💳 plano │ 👤 nome <email>`
 
 Segmentos opcionais (dir, branch, org, plano, identidade) são omitidos junto com seu separador
 quando vazios — seguir esse padrão de concatenação condicional ao adicionar segmentos novos.
