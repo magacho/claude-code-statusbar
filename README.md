@@ -5,8 +5,8 @@ Mostra onde você está, com qual modelo, em que conta — e quanto ainda sobra 
 franquia antes do próximo reset.
 
 ```
-📁 ~/Workspace/minha-api │ ⎇ feat/checkout* │ Opus 5 │ 🧠 think effort:high │ 🏢 Acme (Team)
-▰▰▰▰▱▱▱▱▱▱ 42% │ 5h 12% ⟳2h0m │ 7d 88% ⟳2d7h │ 💳 Max 5x │ 👤 Ana Souza <ana@exemplo.com>
+📁 ~/Workspace/minha-api │ ⎇ feat/checkout* │ Opus 5 │ 🧠 think effort:high │ 💳 Max 5x
+▰▰▰▰▱▱▱▱▱▱ 42% │ 5h 12% ⟳2h0m │ 7d 88% ⟳2d7h │ 🏢 Acme (Team) │ 👤 Ana Souza <ana@exemplo.com>
 ```
 
 Em cores: o `*` na branch indica alterações não commitadas; as porcentagens de janela ficam
@@ -75,7 +75,7 @@ Em qualquer opção, abra uma nova sessão do Claude Code para ver o resultado.
 | `⎇ feat/checkout*` | Branch atual. O `*` aparece quando há alterações não commitadas (working tree ou stage). Fora de um repositório git, o segmento some |
 | `Opus 5` | Modelo em uso |
 | `🧠 think effort:high` | Modo ativo — veja abaixo |
-| `🏢 Acme (Team)` | Organização da conta Claude e seu tipo (`Team`, `Enterprise`) |
+| `💳 Max 5x` | Plano da conta (`Pro`, `Max 5x`, `Max 20x`) |
 
 O campo **modo** combina o que estiver ligado no momento: `⚡ fast` (fast mode), `🧠 think`
 (pensamento estendido), `effort:<nível>` e o nome do output style quando não for o padrão.
@@ -91,7 +91,7 @@ Com nada ligado, mostra `—`.
 | `▰▰▰▰▱▱▱▱▱▱ 42%` | Quanto da janela de contexto da sessão já foi usado |
 | `5h 12% ⟳2h0m` | Franquia da sessão de 5 horas e quanto falta para zerar |
 | `7d 88% ⟳2d7h` | Franquia semanal e quanto falta para zerar |
-| `💳 Max 5x` | Plano da conta (`Pro`, `Max 5x`, `Max 20x`) — é ele que define o tamanho das franquias acima |
+| `🏢 Acme (Team)` | Organização da conta Claude e seu tipo (`Team`, `Enterprise`) |
 | `👤 Nome <email>` | Identidade do `git config` — a do repositório, ou a global |
 
 O `👤` é o alerta barato contra commitar com o e-mail errado ao alternar entre repositórios

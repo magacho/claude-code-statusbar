@@ -78,8 +78,8 @@ precisam mudar juntos — a ordem dos campos é posicional.
 
 ## Layout da saída
 
-- **Linha 1:** `📁 dir │ ⎇ branch │ modelo │ modo │ 🏢 org (tipo)`
-- **Linha 2:** `barra de contexto │ 5h % ⟳reset │ 7d % ⟳reset │ 💳 plano │ 👤 nome <email>`
+- **Linha 1:** `📁 dir │ ⎇ branch │ modelo │ modo │ 💳 plano`
+- **Linha 2:** `barra de contexto │ 5h % ⟳reset │ 7d % ⟳reset │ 🏢 org (tipo) │ 👤 nome <email>`
 
 Segmentos opcionais (dir, branch, org, plano, identidade) são omitidos junto com seu separador
 quando vazios — seguir esse padrão de concatenação condicional ao adicionar segmentos novos.
