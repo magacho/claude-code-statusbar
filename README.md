@@ -166,3 +166,7 @@ cada refresh, os resultados ficam em cache em `/tmp`, chaveados pelo id da sess�
 
 Detalhes de implementação, para quem for alterar o script, estão em
 [`CLAUDE.md`](CLAUDE.md).
+
+## Licença
+
+[MIT](LICENSE).
