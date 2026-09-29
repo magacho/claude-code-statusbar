@@ -79,7 +79,7 @@ precisam mudar juntos — a ordem dos campos é posicional.
 ## Layout da saída
 
 - **Linha 1:** `📁 dir │ ⎇ branch │ modelo │ modo │ 💳 plano`
-- **Linha 2:** `barra de contexto │ 5h % ⟳reset │ 7d % ⟳reset │ 🏢 org (tipo) │ 👤 nome <email>`
+- **Linha 2:** `barra de contexto │ 5h % ⟳ reset │ 7d % ⟳ reset │ 🏢 org (tipo) │ 👤 nome <email>`
 
 Segmentos opcionais (dir, branch, org, plano, identidade) são omitidos junto com seu separador
 quando vazios — seguir esse padrão de concatenação condicional ao adicionar segmentos novos.
@@ -100,5 +100,6 @@ Cores de rate limit e contexto: verde < 50 %, amarelo 50–79 %, vermelho ≥ 80
 
 ## Dependências de ambiente
 
-`jq`, `awk`, `git` e `stat -c %Y` (GNU coreutils — quebra em macOS/BSD, que usa `-f %m`).
-Usa arrays e `((...))` do Bash 4+; o shebang é `bash`, não `sh`.
+`jq`, `awk`, `git` e `stat`: tenta `stat -f %m` (macOS/BSD) e cai para `stat -c %Y` (GNU).
+Usa arrays e `((...))`, compatíveis com o Bash 3.2 do macOS; o shebang é `bash`, não `sh`.
+Evite `${var/#$HOME/\~}`: no Bash 3.2 o `\~` sai literal — use `case` + `${var#"$HOME"}`.
