@@ -30,14 +30,14 @@ ctx=$(j '.context_window.used_percentage // empty'); ctx=${ctx%.*}
 
 # diretório atual, com ~ no lugar do $HOME
 dirdisp="$cwd"
-[ -n "$HOME" ] && dirdisp="${dirdisp/#$HOME/\~}"
+[ -n "$HOME" ] && case "$dirdisp" in "$HOME"*) dirdisp="~${dirdisp#"$HOME"}" ;; esac
 
 # ---------- branch (git) com cache por sessão ----------
 sid=$(j '.session_id // "x"')
 cache="/tmp/statusline-git-${sid}"
 branch=""
 if [ -d "$cwd" ]; then
-  if [ -f "$cache" ] && [ $(( $(date +%s) - $(stat -c %Y "$cache" 2>/dev/null || echo 0) )) -lt 5 ]; then
+  if [ -f "$cache" ] && [ $(( $(date +%s) - $(stat -f %m "$cache" 2>/dev/null || stat -c %Y "$cache" 2>/dev/null || echo 0) )) -lt 5 ]; then
     branch=$(cat "$cache")
   else
     b=$(git -C "$cwd" symbolic-ref --short HEAD 2>/dev/null || git -C "$cwd" rev-parse --short HEAD 2>/dev/null)
@@ -72,7 +72,7 @@ org_label() {
 
 ucache="/tmp/statusline-acct-${sid}"
 guser=""; gmail=""; org=""; orgtype=""; plan=""
-if [ -f "$ucache" ] && [ $(( $(date +%s) - $(stat -c %Y "$ucache" 2>/dev/null || echo 0) )) -lt 300 ]; then
+if [ -f "$ucache" ] && [ $(( $(date +%s) - $(stat -f %m "$ucache" 2>/dev/null || stat -c %Y "$ucache" 2>/dev/null || echo 0) )) -lt 300 ]; then
   IFS='|' read -r guser gmail org orgtype plan < "$ucache"
 else
   if [ -d "$cwd" ]; then
@@ -128,9 +128,9 @@ win() {
     now=$(date +%s); delta=$((reset-now))
     if [ "$delta" -gt 0 ]; then
       h=$((delta/3600)); m=$(((delta%3600)/60))
-      if   [ "$h" -ge 24 ]; then rstr=" ⟳$((h/24))d$((h%24))h"
-      elif [ "$h" -gt 0 ];  then rstr=" ⟳${h}h${m}m"
-      else                       rstr=" ⟳${m}m"; fi
+      if   [ "$h" -ge 24 ]; then rstr=" ⟳ $((h/24))d$((h%24))h"
+      elif [ "$h" -gt 0 ];  then rstr=" ⟳ ${h}h${m}m"
+      else                       rstr=" ⟳ ${m}m"; fi
     fi
   fi
   printf '%s %s%d%%%s%s%s%s' "$label" "$col" "$pct" "$RST" "$DIM" "$rstr" "$RST"

@@ -6,7 +6,7 @@ franquia antes do próximo reset.
 
 ```
 📁 ~/Workspace/minha-api │ ⎇ feat/checkout* │ Opus 5 │ 🧠 think effort:high │ 💳 Max 5x
-▰▰▰▰▱▱▱▱▱▱ 42% │ 5h 12% ⟳2h0m │ 7d 88% ⟳2d7h │ 🏢 Acme (Team) │ 👤 Ana Souza <ana@exemplo.com>
+▰▰▰▰▱▱▱▱▱▱ 42% │ 5h 12% ⟳ 2h0m │ 7d 88% ⟳ 2d7h │ 🏢 Acme (Team) │ 👤 Ana Souza <ana@exemplo.com>
 ```
 
 Em cores: o `*` na branch indica alterações não commitadas; as porcentagens de janela ficam
@@ -14,11 +14,10 @@ verdes até 49 %, amarelas de 50 % a 79 % e vermelhas a partir de 80 %.
 
 ## Requisitos
 
-- `bash` 4 ou superior
+- `bash` 3.2 ou superior (o bash padrão do macOS serve)
 - `jq` — **sem ele a statusline aparece quase vazia**, sem erro visível
 - `git` e `awk`
-- `stat` do GNU coreutils (Linux). Em macOS/BSD o script precisa de ajuste — veja
-  [Limitações](#limitações-conhecidas)
+- `stat` — funciona tanto o do macOS/BSD (`-f %m`) quanto o do GNU coreutils (`-c %Y`)
 
 Conferir de uma vez:
 
@@ -89,8 +88,8 @@ Com nada ligado, mostra `—`.
 | Segmento | Significado |
 |---|---|
 | `▰▰▰▰▱▱▱▱▱▱ 42%` | Quanto da janela de contexto da sessão já foi usado |
-| `5h 12% ⟳2h0m` | Franquia da sessão de 5 horas e quanto falta para zerar |
-| `7d 88% ⟳2d7h` | Franquia semanal e quanto falta para zerar |
+| `5h 12% ⟳ 2h0m` | Franquia da sessão de 5 horas e quanto falta para zerar |
+| `7d 88% ⟳ 2d7h` | Franquia semanal e quanto falta para zerar |
 | `🏢 Acme (Team)` | Organização da conta Claude e seu tipo (`Team`, `Enterprise`) |
 | `👤 Nome <email>` | Identidade do `git config` — a do repositório, ou a global |
 
@@ -150,8 +149,6 @@ imprime o valor cru nesse caso — basta acrescentá-lo em `plan_label()` ou `or
 
 ## Limitações conhecidas
 
-- **Linux apenas**, hoje. O cache usa `stat -c %Y` (GNU); em macOS/BSD o equivalente é
-  `stat -f %m`, e sem esse ajuste os caches expiram a cada refresh.
 - **Modo de permissão não é exibido** — o dado não chega à statusline.
 - **Contexto e franquias são o que o Claude Code informou** no último refresh, não uma consulta
   ao vivo.
