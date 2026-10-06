@@ -100,6 +100,8 @@ Cores de rate limit e contexto: verde < 50 %, amarelo 50–79 %, vermelho ≥ 80
 
 ## Dependências de ambiente
 
-`jq`, `awk`, `git` e `stat`: tenta `stat -f %m` (macOS/BSD) e cai para `stat -c %Y` (GNU).
+`jq`, `awk`, `git` e `stat`: tenta `stat -c %Y` (GNU) e cai para `stat -f %m` (macOS/BSD).
+A ordem importa: no GNU, `stat -f` é o modo *filesystem* — imprime um bloco de texto no stdout
+antes de falhar, e esse texto quebra a aritmética. No BSD, `-c` falha sem imprimir nada.
 Usa arrays e `((...))`, compatíveis com o Bash 3.2 do macOS; o shebang é `bash`, não `sh`.
 Evite `${var/#$HOME/\~}`: no Bash 3.2 o `\~` sai literal — use `case` + `${var#"$HOME"}`.

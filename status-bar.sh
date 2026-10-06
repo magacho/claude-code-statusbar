@@ -37,7 +37,7 @@ sid=$(j '.session_id // "x"')
 cache="/tmp/statusline-git-${sid}"
 branch=""
 if [ -d "$cwd" ]; then
-  if [ -f "$cache" ] && [ $(( $(date +%s) - $(stat -f %m "$cache" 2>/dev/null || stat -c %Y "$cache" 2>/dev/null || echo 0) )) -lt 5 ]; then
+  if [ -f "$cache" ] && [ $(( $(date +%s) - $(stat -c %Y "$cache" 2>/dev/null || stat -f %m "$cache" 2>/dev/null || echo 0) )) -lt 5 ]; then
     branch=$(cat "$cache")
   else
     b=$(git -C "$cwd" symbolic-ref --short HEAD 2>/dev/null || git -C "$cwd" rev-parse --short HEAD 2>/dev/null)
@@ -72,7 +72,7 @@ org_label() {
 
 ucache="/tmp/statusline-acct-${sid}"
 guser=""; gmail=""; org=""; orgtype=""; plan=""
-if [ -f "$ucache" ] && [ $(( $(date +%s) - $(stat -f %m "$ucache" 2>/dev/null || stat -c %Y "$ucache" 2>/dev/null || echo 0) )) -lt 300 ]; then
+if [ -f "$ucache" ] && [ $(( $(date +%s) - $(stat -c %Y "$ucache" 2>/dev/null || stat -f %m "$ucache" 2>/dev/null || echo 0) )) -lt 300 ]; then
   IFS='|' read -r guser gmail org orgtype plan < "$ucache"
 else
   if [ -d "$cwd" ]; then
