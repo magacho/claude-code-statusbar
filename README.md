@@ -10,7 +10,8 @@ franquia antes do próximo reset.
 ```
 
 Em cores: o `*` na branch indica alterações não commitadas; as porcentagens de janela ficam
-verdes até 49 %, amarelas de 50 % a 79 % e vermelhas a partir de 80 %.
+verdes até 49 %, amarelas de 50 % a 79 % e vermelhas a partir de 80 %; a barra de contexto fica
+azul até 49 %, amarela de 50 % a 70 % e vermelha a partir de 71 %.
 
 ## Requisitos
 
@@ -108,7 +109,8 @@ Tudo mora em `status-bar.sh`, sem dependências. Os pontos mais mexidos:
   (variável `line2`); mover um é trocá-lo de bloco. Cada segmento já se omite sozinho quando
   o dado está vazio.
 - **Cores** — as variáveis `FG_*` no topo do arquivo são códigos ANSI.
-- **Limiares de alerta** — os valores `80` e `50` na função `win()`.
+- **Limiares de alerta** — os valores `80` e `50` na função `win()` (janelas) e `71` e `50` na
+  função `ctxbar()` (contexto).
 - **Largura da barra de contexto** — `width=10` na função `ctxbar()`.
 
 Depois de editar, teste sem abrir uma sessão nova:

@@ -106,13 +106,16 @@ fi
 
 # ---------- barra de contexto ----------
 ctxbar() {
-  local pct=$1 width=10 filled empty bar="" i
-  if [ -z "$pct" ]; then printf '▱▱▱▱▱▱▱▱▱▱ --%%'; return; fi
+  local pct=$1 width=10 filled empty bar="" i col
+  if [ -z "$pct" ]; then printf '%s▱▱▱▱▱▱▱▱▱▱ --%%%s' "$FG_BLUE" "$RST"; return; fi
+  if   [ "$pct" -ge 71 ]; then col=$FG_RED
+  elif [ "$pct" -ge 50 ]; then col=$FG_YELLOW
+  else col=$FG_BLUE; fi
   filled=$(awk -v p="$pct" -v w="$width" 'BEGIN{printf "%d",(p/100)*w}')
   empty=$((width-filled))
   for ((i=0;i<filled;i++)); do bar="${bar}▰"; done
   for ((i=0;i<empty;i++));  do bar="${bar}▱"; done
-  printf '%s %d%%' "$bar" "$pct"
+  printf '%s%s %d%%%s' "$col" "$bar" "$pct" "$RST"
 }
 
 # ---------- janela de rate limit ----------
@@ -146,7 +149,7 @@ out="${out}${SEP}${DIM}${mode}${RST}"
 [ -n "$plan" ] && out="${out}${SEP}${FG_MAG}💳 ${plan}${RST}"
 
 # ---------- 2ª linha: contexto + janelas + org + identidade git ----------
-line2="${FG_BLUE}$(ctxbar "$ctx")${RST}"
+line2="$(ctxbar "$ctx")"
 line2="${line2}${SEP}$(win five_hour '5h')"
 line2="${line2}${SEP}$(win seven_day '7d')"
 if [ -n "$org" ]; then

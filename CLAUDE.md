@@ -86,7 +86,8 @@ quando vazios — seguir esse padrão de concatenação condicional ao adicionar
 
 O `printf` final **não emite newline** ao fim da segunda linha; o harness cuida disso.
 
-Cores de rate limit e contexto: verde < 50 %, amarelo 50–79 %, vermelho ≥ 80 %.
+Cores de rate limit: verde < 50 %, amarelo 50–79 %, vermelho ≥ 80 % (`win()`).
+Cores da barra de contexto: azul < 50 %, amarelo 50–70 %, vermelho ≥ 71 % (`ctxbar()`).
 
 ## Ao alterar o script
 
