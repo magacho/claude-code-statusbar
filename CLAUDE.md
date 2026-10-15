@@ -36,6 +36,13 @@ degradar sem erro), um `current_dir` fora de repositório git, e a saída sem co
 rm -f /tmp/statusline-git-* /tmp/statusline-acct-*
 ```
 
+**Distribuição como plugin.** O repositório também é o plugin `statusbar`, listado no marketplace
+`magacho/claude-marketplace`: `.claude-plugin/plugin.json` (a `version` dali é o que dispara o
+update nos usuários — subir junto com cada release), `hooks/hooks.json` (SessionStart roda
+`scripts/install.sh`, que copia o `status-bar.sh` para `~/.claude/statusbar/` quando mudou; não pode
+imprimir nada, a saída vai para o contexto do modelo) e `skills/setup/SKILL.md` (o `/statusbar:setup`,
+que grava o `statusLine`). Validar com `claude plugin validate .`.
+
 **Publicar a alteração** — depende de como o usuário instalou (ver `README.md`). Se o
 `statusLine` do `settings.json` aponta para `~/.claude/statusline-command.sh` em vez do caminho
 deste repositório, editar aqui não muda nada até copiar:

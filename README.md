@@ -28,10 +28,27 @@ bash --version | head -1 && command -v jq git awk stat
 
 ## Instalação
 
+### Como plugin (recomendado)
+
+Instala pelo marketplace e se atualiza sozinho a cada release:
+
+```
+/plugin install statusbar --marketplace magacho/claude-marketplace
+/statusbar:setup
+```
+
+O `/statusbar:setup` confere os requisitos e aponta o `statusLine` do `~/.claude/settings.json`
+para `~/.claude/statusbar/status-bar.sh` (com backup do arquivo antes). Só precisa rodar uma vez
+por máquina. Depois disso, a cada início de sessão o plugin copia a versão instalada para esse
+caminho — um update do plugin chega à barra sem nenhum passo manual. Para receber os updates
+sozinho, ligue a atualização automática em `/plugin` → Marketplaces → `magacho`.
+
+### Manual
+
 O Claude Code chama um comando a cada atualização da statusline. Basta apontar esse comando
 para o `status-bar.sh` deste repositório.
 
-### Opção 1 — usar direto do projeto (recomendado)
+#### Opção 1 — usar direto do projeto
 
 Nada é copiado: o Claude Code executa o arquivo no lugar onde ele está, então um `git pull` ou
 uma edição local já valem na próxima sessão.
@@ -47,7 +64,7 @@ Edite `~/.claude/settings.json` e acrescente (trocando o caminho pelo seu clone)
 }
 ```
 
-### Opção 2 — copiar para `~/.claude`
+#### Opção 2 — copiar para `~/.claude`
 
 Se preferir que a statusline não dependa da pasta do clone:
 

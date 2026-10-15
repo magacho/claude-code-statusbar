@@ -1,0 +1,8 @@
+{
+  "name": "statusbar",
+  "version": "1.1.0",
+  "description": "Statusline de duas linhas: diretório, branch, modelo, modo, plano, contexto, franquias de uso, org e identidade git",
+  "author": { "name": "Flavio Magacho" },
+  "repository": "https://github.com/magacho/claude-code-statusbar",
+  "license": "MIT"
+}
