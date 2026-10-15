@@ -75,7 +75,7 @@ Em qualquer opção, abra uma nova sessão do Claude Code para ver o resultado.
 | `⎇ feat/checkout*` | Branch atual. O `*` aparece quando há alterações não commitadas (working tree ou stage). Fora de um repositório git, o segmento some |
 | `Opus 5` | Modelo em uso |
 | `🧠 think effort:high` | Modo ativo — veja abaixo |
-| `💳 Max 5x` | Plano da conta (`Pro`, `Max 5x`, `Max 20x`) |
+| `💳 Max 5x` | Plano da conta (`Pro`, `Max 5x`, `Max 20x`; `Standard` para assento Team/Enterprise sem tier Max) |
 
 O campo **modo** combina o que estiver ligado no momento: `⚡ fast` (fast mode), `🧠 think`
 (pensamento estendido), `effort:<nível>` e o nome do output style quando não for o padrão.

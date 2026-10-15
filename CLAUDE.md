@@ -49,7 +49,7 @@ cp status-bar.sh ~/.claude/statusline-command.sh
 O payload do harness **não contém** vários dados que a linha mostra. O script os reconstrói:
 
 - **Org e plano** não vêm no stdin. São lidos de `~/.claude.json` (`.oauthAccount`) e traduzidos
-  por `plan_label()` / `org_label()` — `default_claude_max_5x` → `Max 5x`, `claude_team` → `Team`.
+  por `plan_label()` / `org_label()` — `default_claude_max_5x` → `Max 5x`, `default_raven` → `Standard`, `claude_team` → `Team`.
   Se aparecer um tier novo, o fallback imprime o valor cru sem o prefixo `default_claude_`.
 - **Modo Plan / permissões não é exposto** pelo harness. O campo "modo" é um *proxy* honesto
   montado de `fast_mode` + `thinking.enabled` + `effort.level` + `output_style.name`.

@@ -57,6 +57,7 @@ plan_label() {
     *max_20x) printf 'Max 20x' ;;
     *max_5x)  printf 'Max 5x'  ;;
     *pro)     printf 'Pro'     ;;
+    *raven)   printf 'Standard' ;;  # assento Team/Enterprise sem tier Max próprio
     "")       printf ''        ;;
     *)        printf '%s' "${1#default_claude_}" ;;
   esac
